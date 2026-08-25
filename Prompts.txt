@@ -1,0 +1,36 @@
+ereinigt: „Gewinnspiel“-Projekt ist wieder ohne Firebase/Auth/Router/Admin
+
+1) Entfernt (Dateien komplett gelöscht)
+
+- Firebase/Firestore-CLI Dateien:
+  - firestore.rules
+  - firestore.indexes.json
+  - firebase.json
+  - .firebaserc
+- Firebase/Vite Env:
+  - .env.example
+  - vite-env.d.ts
+  - firebase.ts
+- Auth/Admin-Portal:
+  - AuthProvider.tsx
+  - RequireAuth.tsx
+  - Login.tsx
+  - Login.css
+  - Gewinnspiele.tsx
+  - Gewinnspiele.css
+2) Entfernt (Dependencies)
+
+- firebase und react-router-dom sind aus package.json entfernt (inkl. Cleanup in package-lock/node_modules).
+3) Zurückgesetzt (Router/Auth aus Code entfernt)
+
+- App.tsx ist wieder im ursprünglichen Zustand: nur Logo/Header + <GiveawayForm /> , kein Router, keine /login oder /gewinnspiele .
+- main.tsx rendert wieder direkt <App /> (kein BrowserRouter , kein AuthProvider).
+- App.css ist bereinigt (keine Top-Navigation-/Header-Inner Styles mehr).
+- .gitignore ist rückgängig gemacht (die hinzugefügten .env -Ignore-Einträge sind wieder raus).
+4) Check auf verwaiste Imports/Referenzen
+
+- Es gibt keine Treffer mehr auf firebase , react-router-dom , BrowserRouter , AuthProvider , RequireAuth , /login , /gewinnspiele in src/ .
+- TypeScript/Vite Build läuft wieder sauber durch (keine kaputten Imports).
+Hinweis zur „Diff“-Bitte: Der Ordner ist aktuell kein Git-Repository, daher kann ich keinen klassischen git diff ausgeben. Wenn du willst, kann ich dir aber die bereinigten Dateien (z.B. App.tsx/main.tsx/package.json) jeweils vollständig anzeigen oder wir initialisieren Git, damit du künftig echte Diffs bekommst.
+
+Wenn du als nächsten Schritt wirklich auf „nur HTML/CSS/JS für LittleFS, kein React/Vite“ umstellen willst, sag kurz Bescheid — das ist eine separate Umstellung (würde dann die React-Struktur entfernen/ersetzen), ohne das Formular-Verhalten zu ändern.
